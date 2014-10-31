@@ -1,4 +1,4 @@
 player-tracker
 ==============
 
-UAG player tracker. Supposed to run an local web server that will return a requests with player names at request from browser extension. 
+UAG player tracker. Runs a local web server that looks for a player names at UAG servers. 
