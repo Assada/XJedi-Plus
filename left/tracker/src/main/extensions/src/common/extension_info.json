@@ -1,17 +1,17 @@
 {
     "content_scripts": [], 
-    "description": "UAG player tracker",
+    "description": "UAG Player Tracker",
     "creator": "left",
     "background_scripts": [
-        "js/jQuery-2.1.1.min.js",
-        "background.js"
+        "lib/require.js",
+        "app.js"
     ], 
     "homepage_url": "http://kangoextensions.com/", 
     "version": "0.9.0", 
     "browser_button": {
-        "caption": "Player tracker",
+        "caption": "Player Tracker",
         "icon": "icons/button.png", 
-        "tooltipText": "player tracker"
+        "tooltipText": "Player Tracker"
     }, 
     "name": "player-tracker",
     "permissions": {
