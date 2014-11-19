@@ -67,3 +67,4 @@ $RECYCLE.BIN/
 left/tracker/src/main/extensions/output/
 left/tracker/src/main/extensions/certificates/
 *.bat
+*.pem
