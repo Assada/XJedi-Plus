@@ -4,5 +4,3 @@ requirejs.config({
         app: '../app'
     }
 });
-
-requirejs(['app/od']);
