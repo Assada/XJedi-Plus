@@ -16,5 +16,6 @@
     "name": "player-tracker",
     "permissions": {
         "notifications": true
-    }
+    },
+    "options_page": "options.html"
 }
