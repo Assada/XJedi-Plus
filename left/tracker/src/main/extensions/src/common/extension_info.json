@@ -17,5 +17,8 @@
     "permissions": {
         "notifications": true
     },
-    "options_page": "options.html"
+    "options_page": "options.html",
+    "content_scripts": [
+        "app/forum.js"
+    ]
 }
