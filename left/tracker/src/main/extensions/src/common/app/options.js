@@ -8,12 +8,11 @@ window.addEventListener('load', function () {
     if (nickList.length === 0) {
         $btnClearNick.attr('disabled', 'disabled');
         $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
-    } else {
-        $('.delete').tooltip();
     }
     $.each(nickList, function (id, nick) {
         $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
     });
+    $('.delete').tooltip();
     addNick.addEventListener('click', function () {
         var $nick = $('#nickName'),
             $nickVal = $nick.val();
