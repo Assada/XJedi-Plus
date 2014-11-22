@@ -4,6 +4,7 @@ window.addEventListener('load', function () {
         clearNick = document.getElementById('clearNick'),
         $btnClearNick = $('#btnClearNickList'),
         $listOfNick = $('#nickList'),
+        forumFeatures = document.getElementById('forumFeatures'),
         nickList = kango.storage.getItem('nickList') || [];
     if (nickList.length === 0) {
         $btnClearNick.attr('disabled', 'disabled');
@@ -12,7 +13,6 @@ window.addEventListener('load', function () {
     $.each(nickList, function (id, nick) {
         $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
     });
-    $('.delete').tooltip();
     addNick.addEventListener('click', function () {
         var $nick = $('#nickName'),
             $nickVal = $nick.val();
@@ -50,4 +50,9 @@ window.addEventListener('load', function () {
             }
         }
     });
+    $('input#forumFeatures').on('switchChange.bootstrapSwitch', function (event, state) {
+        kango.storage.setItem('forumFeatures', state);
+    });
+    $('.delete').tooltip();
+    $('#forumFeatures').bootstrapSwitch();
 });
