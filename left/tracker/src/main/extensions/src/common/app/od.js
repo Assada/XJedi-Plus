@@ -7,7 +7,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
             var html = common.getPageHtml('http://xjedi.com/index.jsp?com=odlist&onlyWins=true'),
                 content = $($.parseHTML(html)).find('div.odSubBlock1'),
                 oldList = kango.storage.getItem('OD_LVLS'),
-                track_nicks = ['Descry']; //TODO: In storage
+                track_nicks = kango.storage.getItem('nickList') || [];
             if (main.checkUser(main.createList(content, track_nicks), oldList)) {
                 kango.storage.setItem('OD_LVLS', main.createList(content, track_nicks));
             }
