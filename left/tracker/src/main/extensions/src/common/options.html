@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Настройки</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-switch.min.css" rel="stylesheet">
     <link href="css/options.css" rel="stylesheet">
 </head>
 <body>
@@ -32,7 +33,7 @@
                         <div class="tab-pane active" id="settings_1">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> Добавляйте на форум всякие штуки
+                                    Нам добавлять на форум всякие штуки? <input type="checkbox" id="forumFeatures" data-on-text="Да" data-off-text="Нет" data-label-width="0" checked data-size="small" checked>
                                 </label>
                             </div>
                         </div>
@@ -106,6 +107,7 @@
 <script type="text/javascript" src="kango-ui/kango_api.js"></script>
 <script type="text/javascript" src="lib/jquery.min.js"></script>
 <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap-switch.min.js"></script>
 <script type="text/javascript" src="lib/underscore.min.js"></script>
 <script type="text/javascript" src="app/options.js"></script>
 </body>
