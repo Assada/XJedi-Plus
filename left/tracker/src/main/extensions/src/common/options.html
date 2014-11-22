@@ -1,51 +1,108 @@
 <!DOCTYPE html>
 <html>
-    <head lang="en">
-        <meta charset="UTF-8">
-        <title>Настройки</title>
-        <script type="text/javascript" src="kango-ui/kango_api.js"></script>
-        <script type="text/javascript" src="lib/jquery.min.js"></script>
-        <script type="text/javascript" src="lib/bootstrap.min.js"></script>
-        <script type="text/javascript" src="app/options.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/options.css" rel="stylesheet">
-    </head>
-    <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Настройки</h3>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Настройки</title>
+    <script type="text/javascript" src="kango-ui/kango_api.js"></script>
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/underscore.min.js"></script>
+    <script type="text/javascript" src="app/options.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/options.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Настройки</h3>
 
-                <div class="tabbable-panel">
-                    <div class="tabbable-line">
-                        <ul class="nav nav-tabs ">
-                            <li class="active">
-                                <a href="#settings_1" data-toggle="tab">
-                                    Все настройки </a>
-                            </li>
-                            <li>
-                                <a href="#settings_2" data-toggle="tab">
-                                    Настрйоки монитора OD </a>
-                            </li>
-                            <li>
-                                <a href="#settings_3" data-toggle="tab">
-                                    Настройки чего-то </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="settings_1">
-                               Общие настрйоки
+            <div class="tabbable-panel">
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a href="#settings_1" data-toggle="tab">
+                                Все настройки </a>
+                        </li>
+                        <li>
+                            <a href="#settings_2" data-toggle="tab">
+                                Настрйоки монитора уровня </a>
+                        </li>
+                        <li>
+                            <a href="#settings_3" data-toggle="tab">
+                                Настройки чего-то </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="settings_1">
+                            Общие настрйоки
+                        </div>
+                        <div class="tab-pane" id="settings_2">
+                            <div id="nicks">
+                                <p><strong>Мы сейчас отслеживаем для вас икроков с именами:</strong>
+                                <div id="nickList">
+                                    <span class="label label-default">Starboy <span class="glyphicon glyphicon-trash"></span></span>
+                                </div>
+                                </p>
+                                <div class="nickActions">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewNick">Я хочу еще! <span class="glyphicon glyphicon-plus"></span></button>
+                                    <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#clearNickList">Мне это не нужно <span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
                             </div>
-                            <div class="tab-pane" id="settings_2">
 
-                            </div>
-                            <div class="tab-pane" id="settings_3">
-                                Настройки чего-то
-                            </div>
+                        </div>
+                        <div class="tab-pane" id="settings_3">
+                            Настройки чего-то
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-    </body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="clearNickList" tabindex="-1" role="dialog" aria-labelledby="clearNickListLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>
+                    <h4 class="modal-title" id="clearNickListLabel">Я больше не нуждаюсь в услугах слежки</h4>
+                </div>
+                <div class="modal-body">
+                    <p><small>Похоже вы потеряли интерес ко всему и больше не хотите следить за игроками. Что же... Мы можем помочь вам и в этом!</small></p>
+
+                    <p class="text-danger">Это действие удалит все имена из списка слежки за уровнем! <i><small>И не говорите что мы вас не предупреждали</small></i></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Я передумал</button>
+                    <button type="button" class="btn btn-primary">Уберите всех!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addNewNick" tabindex="-1" role="dialog" aria-labelledby="addNewNickLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>
+                    <h4 class="modal-title" id="addNewNickLabel">Хочу следить за...</h4>
+                </div>
+                <div class="modal-body">
+                    <p><small>Вы знаете, для вас нам ничего не жалко! Мы поможем вам следить не только за игроком <i>Starboy</i> но и за многими другими.</small></p>
+
+                    <p>Введите имя в поле ниже, что бы мы начали его искать.</p>
+                    <input id="nickName" class="form-control" type="text" placeholder="Только будьте внимательны и вводите имя без клана и звания - это нам не нужно."/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Я передумал</button>
+                    <button type="button" class="btn btn-primary" id="addNick">Действуйте!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
 </html>
