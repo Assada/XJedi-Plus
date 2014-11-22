@@ -3,11 +3,6 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Настройки</title>
-    <script type="text/javascript" src="kango-ui/kango_api.js"></script>
-    <script type="text/javascript" src="lib/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
-    <script type="text/javascript" src="lib/underscore.min.js"></script>
-    <script type="text/javascript" src="app/options.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/options.css" rel="stylesheet">
 </head>
@@ -41,12 +36,12 @@
                             <div id="nicks">
                                 <p><strong>Мы сейчас отслеживаем для вас икроков с именами:</strong>
                                 <div id="nickList">
-                                    <span class="label label-default">Starboy <span class="glyphicon glyphicon-trash"></span></span>
+
                                 </div>
                                 </p>
                                 <div class="nickActions">
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewNick">Я хочу еще! <span class="glyphicon glyphicon-plus"></span></button>
-                                    <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#clearNickList">Мне это не нужно <span class="glyphicon glyphicon-trash"></span></button>
+                                    <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#clearNickList" id="btnClearNickList">Мне это не нужно <span class="glyphicon glyphicon-trash"></span></button>
                                 </div>
                             </div>
 
@@ -75,7 +70,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Я передумал</button>
-                    <button type="button" class="btn btn-primary">Уберите всех!</button>
+                    <button type="button" class="btn btn-primary" id="clearNick" data-dismiss="modal">Уберите всех!</button>
                 </div>
             </div>
         </div>
@@ -97,12 +92,17 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Я передумал</button>
-                    <button type="button" class="btn btn-primary" id="addNick">Действуйте!</button>
+                    <button type="button" class="btn btn-primary" id="addNick" data-dismiss="modal">Действуйте!</button>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+<script type="text/javascript" src="kango-ui/kango_api.js"></script>
+<script type="text/javascript" src="lib/jquery.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/underscore.min.js"></script>
+<script type="text/javascript" src="app/options.js"></script>
 </body>
 </html>
