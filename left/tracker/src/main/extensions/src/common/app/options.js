@@ -36,7 +36,7 @@ window.addEventListener('load', function () {
     document.querySelector('body').addEventListener('click', function (event) {
         var $target = $(event.target);
         if ($target.hasClass('delete')) {
-            var $nick = $target.parent().text().replace(/\s/g, '');
+            var $nick = $target.parent().text().trim();
             $target.parent().remove();
             if (nickList.indexOf($nick) > -1) {
                 if (nickList.splice(nickList.indexOf($nick), 1)) {
