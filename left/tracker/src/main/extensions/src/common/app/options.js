@@ -8,9 +8,11 @@ window.addEventListener('load', function () {
     if (nickList.length === 0) {
         $btnClearNick.attr('disabled', 'disabled');
         $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
+    } else {
+        $('.delete').tooltip();
     }
     $.each(nickList, function (id, nick) {
-        $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete"></span></span> ');
+        $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
     });
     addNick.addEventListener('click', function () {
         var $nick = $('#nickName'),
@@ -23,13 +25,13 @@ window.addEventListener('load', function () {
             if (nickList.length === 1) {
                 $listOfNick.empty();
             }
-            $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete"></span></span> ');
+            $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete" data-toggle="tooltip" data-placement="top" title="Убрать его></span></span> ');
         }
         console.log(nickList);
     });
     clearNick.addEventListener('click', function () {
         $btnClearNick.attr('disabled', 'disabled');
-        $listOfNick.empty();
+        $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
         kango.storage.removeItem('nickList');
         nickList = [];
     });
