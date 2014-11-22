@@ -19,7 +19,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
                 if ($(value).attr('style') === 'width:100%;') {
                     var user = $(value).text(),
                         users = user.split('got'),
-                        nick = users[0].replace(/\s/g, ''),
+                        nick = users[0].trim(),
                         lvl = +(users[1].replace('level ', ''));
                     $.each(nicks, function (index, value) {
                         if (value.indexOf(nick) + 1) {
