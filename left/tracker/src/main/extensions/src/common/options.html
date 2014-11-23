@@ -33,12 +33,23 @@
                         <div class="tab-pane active" id="settings_1">
                             <div class="checkbox">
                                 <label>
-                                    Нам добавлять на форум всякие штуки? <input type="checkbox" id="forumFeatures" data-on-text="Да" data-off-text="Нет" data-label-width="0" checked data-size="small" checked>
+                                    Нам добавлять на форум всякие штуки? <input type="checkbox" id="forumFeatures" data-on-text="Да" data-off-text="Нет" data-label-width="0" data-size="small">
                                 </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profileLink">
+                                    <div class="checkbox">
+                                        <label>
+                                            Нам отслеживать игроков которые получили ваш уровень? <input type="checkbox" id="checkLvl" data-on-text="Да" data-off-text="Нет" data-label-width="0" data-size="small">
+                                        </label>
+                                    </div>
+                                </label>
+                                <input type="text" class="form-control" id="profileLink" placeholder="Вставляйте сюда ссылку на вашу страничку" disabled="disabled">
                             </div>
                         </div>
                         <div class="tab-pane" id="settings_2">
-                            <div id="nicks">
+                            <div id="nicks" style="padding-bottom: 15px">
                                 <p><strong>Мы сейчас отслеживаем для вас икроков с именами:</strong>
                                 <div id="nickList">
 
@@ -48,6 +59,10 @@
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewNick">Я хочу еще! <span class="glyphicon glyphicon-plus"></span></button>
                                     <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#clearNickList" id="btnClearNickList">Мне это не нужно <span class="glyphicon glyphicon-trash"></span></button>
                                 </div>
+                            </div>
+                            <hr/>
+                            <div id="lvl">
+                                <p>Мы вас <span id="lvlNo" class="tooltipp" data-toggle="tooltip" data-placement="top" title="Включите в натсрйоках"></span> уведомим если кто-то достигнет <strong>9</strong> уровня!</p>
                             </div>
 
                         </div>

@@ -4,13 +4,16 @@ window.addEventListener('load', function () {
         clearNick = document.getElementById('clearNick'),
         $btnClearNick = $('#btnClearNickList'),
         $listOfNick = $('#nickList'),
+        $profileLink = $('#profileLink'),
+        $forumFeatures = $('input#forumFeatures'),
+        $checkLvl = $('input#checkLvl'),
         nickList = kango.storage.getItem('nickList') || [];
     if (nickList.length === 0) {
         $btnClearNick.attr('disabled', 'disabled');
         $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
     }
     $.each(nickList, function (id, nick) {
-        $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
+        $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
     });
     addNick.addEventListener('click', function () {
         var $nick = $('#nickName'),
@@ -23,7 +26,7 @@ window.addEventListener('load', function () {
             if (nickList.length === 1) {
                 $listOfNick.empty();
             }
-            $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
+            $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
         }
         console.log(nickList);
     });
@@ -51,9 +54,34 @@ window.addEventListener('load', function () {
             }
         }
     });
-    $('input#forumFeatures').on('switchChange.bootstrapSwitch', function (event, state) {
+    $forumFeatures.on('switchChange.bootstrapSwitch', function (event, state) {
         kango.storage.setItem('forumFeatures', state);
     });
-    $('.delete').tooltip();
-    $('#forumFeatures').bootstrapSwitch();
+    $checkLvl.on('switchChange.bootstrapSwitch', function (event, state) {
+        kango.storage.setItem('checkLvl', state);
+        if (state) {
+            $profileLink.removeAttr('disabled');
+        } else {
+            $profileLink.attr('disabled', 'disabled');
+        }
+        $('#lvlNo').html(kango.storage.getItem('checkLvl') ? '' : '<abbr><strong> НЕ </strong></abbr>');
+    });
+    $profileLink.on('keyup', function (event, state) {
+        var regexp = /(http|https):\/\/xjedi\.com\/forum\/index\.php\?showuser=\d{1,5}/i;
+        if (regexp.test($(this).val())) {
+            kango.storage.setItem('profileLink', $(this).val());
+        }
+    });
+    if (kango.storage.getItem('checkLvl')) {
+        $checkLvl.bootstrapSwitch('state', true);
+        $profileLink.removeAttr('disabled');
+    } else {
+        $checkLvl.bootstrapSwitch('state', false);
+        $profileLink.attr('disabled', 'disabled');
+    }
+    $forumFeatures.bootstrapSwitch('state', kango.storage.getItem('forumFeatures') || false);
+    $('.tooltipp').tooltip();
+    $('#lvlNo').html(kango.storage.getItem('checkLvl') ? '' : '<abbr><strong> НЕ </strong></abbr>');
+    $('#forumFeatures, #checkLvl').bootstrapSwitch();
+    $profileLink.val(kango.storage.getItem('profileLink') || '');
 });
