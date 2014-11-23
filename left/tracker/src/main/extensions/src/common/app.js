@@ -14,3 +14,5 @@ require(
         }());
     }
 );
+
+kango.ui.browserButton.setPopup({url: 'popup.html', width: 710, height: 510});
