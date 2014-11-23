@@ -4,7 +4,6 @@ window.addEventListener('load', function () {
         clearNick = document.getElementById('clearNick'),
         $btnClearNick = $('#btnClearNickList'),
         $listOfNick = $('#nickList'),
-        forumFeatures = document.getElementById('forumFeatures'),
         nickList = kango.storage.getItem('nickList') || [];
     if (nickList.length === 0) {
         $btnClearNick.attr('disabled', 'disabled');
@@ -24,7 +23,7 @@ window.addEventListener('load', function () {
             if (nickList.length === 1) {
                 $listOfNick.empty();
             }
-            $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete" data-toggle="tooltip" data-placement="top" title="Убрать его></span></span> ');
+            $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
         }
         console.log(nickList);
     });
@@ -37,13 +36,15 @@ window.addEventListener('load', function () {
     document.querySelector('body').addEventListener('click', function (event) {
         var $target = $(event.target);
         if ($target.hasClass('delete')) {
-            var $nick = $target.parent().text().trim();
+            var $nick = $target.parent().text().replace(' Убрать его', '').trim();
             $target.parent().remove();
+            console.log(':' + $nick);
             if (nickList.indexOf($nick) > -1) {
                 if (nickList.splice(nickList.indexOf($nick), 1)) {
                     kango.storage.setItem('nickList', nickList);
                 }
             }
+            console.log(nickList);
             if (nickList.length === 0) {
                 $btnClearNick.attr('disabled', 'disabled');
                 $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
