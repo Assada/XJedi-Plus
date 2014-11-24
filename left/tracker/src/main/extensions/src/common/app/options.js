@@ -82,6 +82,7 @@ window.addEventListener('load', function () {
     $forumFeatures.bootstrapSwitch('state', kango.storage.getItem('forumFeatures') || false);
     $('.tooltipp').tooltip();
     $('#lvlNo').html(kango.storage.getItem('checkLvl') ? '' : '<abbr><strong> НЕ </strong></abbr>');
+    $('#yourLvl').html(kango.storage.getItem('profileLvl') || ' 1 ');
     $('#forumFeatures, #checkLvl').bootstrapSwitch();
     $profileLink.val(kango.storage.getItem('profileLink') || '');
 });
