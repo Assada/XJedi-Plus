@@ -7,10 +7,12 @@ define(['app/common', 'jquery.min'], function (common) {
             var html = common.getPageHtml('http://xjedi.com/monitor/monitor.jsp'),
                 test = $.parseHTML(html);
             kango.storage.setItem('serversData', main.parser(test));
-            kango.console.log(main.parser(test));
+            //kango.console.log(main.parser(test));
         },
         parser: function (content) {
-            var allServers = [];
+            var allServers = [],
+                activity = kango.storage.getItem('playersActivity') || [],
+                time = new Date().getTime();
             $(content).each(function () {
                 kango.console.log('parser start');
                 var playersInServer = [],
@@ -36,6 +38,21 @@ define(['app/common', 'jquery.min'], function (common) {
                             }
                             if (user.replace('                ', '').length !== 0) {
                                 playersInServer.push({ user: user, score: +scores[i]});
+                                if (activity.length !== 0) {
+                                    $(activity).each(function () {
+                                        if (this.name === $(user).text().trim()) {
+                                            this.time = time;
+                                            this.server = name;
+                                            console.log('upd ' + $(user).text().trim());
+                                        } else {
+                                            activity.push({ name: $(user).text(), time: time, server: name });
+                                            console.log('add: ' + $(user).text().trim());
+                                        }
+                                    });
+                                } else {
+                                    activity.push({ name: $(user).text(), time: time, server: name });
+                                    console.log('add: ' + $(user).text());
+                                }
                             }
                             i++;
                         });
@@ -50,7 +67,7 @@ define(['app/common', 'jquery.min'], function (common) {
                     });
                 }
             });
-            kango.console.info('parser loaded');
+            kango.storage.setItem('playersActivity', activity);
             return allServers;
         }
     };
