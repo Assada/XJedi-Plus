@@ -37,11 +37,11 @@ define(['app/common', 'jquery.min'], function (common) {
                             }
                             if (user.replace('                ', '').length !== 0) {
                                 playersInServer.push({ user: user, score: +scores[i]});
-                                if (activity.length !== 0 && $(user).text().trim() !== '...') {
+                               /* if (activity.length !== 0 && $(user).text().trim() !== '...') {
                                     $(activity).each(function () {
                                         if (this.name === $(user).text().trim()) {
                                             this.time = time;
-                                            this.server = name;
+                                            this.server = $(user).text().trim();
                                             console.log('upd ' + $(user).text().trim());
                                         } else {
                                             activity.push({ name: $(user).text(), time: time, server: name });
@@ -49,6 +49,16 @@ define(['app/common', 'jquery.min'], function (common) {
                                         }
                                     });
                                 } else if ($(user).text().trim() !== '...') {
+                                    activity.push({ name: $(user).text().trim(), time: time, server: name });
+                                    console.log('add1: ' + $(user).text().trim());
+                                }*/
+                                if (_.find(activity, function (item) {
+                                        return item.name === $(user).text().trim();
+                                    }) && $(user).text().trim() !== '...') {
+                                    this.time = time;
+                                    this.server = $(user).text().trim();
+                                    console.log('upd ' + $(user).text().trim());
+                                } else {
                                     activity.push({ name: $(user).text().trim(), time: time, server: name });
                                     console.log('add1: ' + $(user).text().trim());
                                 }
