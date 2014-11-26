@@ -7,7 +7,6 @@ define(['app/common', 'jquery.min'], function (common) {
             var html = common.getPageHtml('http://xjedi.com/monitor/monitor.jsp'),
                 test = $.parseHTML(html);
             kango.storage.setItem('serversData', main.parser(test));
-            //kango.console.log(main.parser(test));
         },
         parser: function (content) {
             var allServers = [],
@@ -38,7 +37,7 @@ define(['app/common', 'jquery.min'], function (common) {
                             }
                             if (user.replace('                ', '').length !== 0) {
                                 playersInServer.push({ user: user, score: +scores[i]});
-                                if (activity.length !== 0) {
+                                if (activity.length !== 0 && $(user).text().trim() !== '...') {
                                     $(activity).each(function () {
                                         if (this.name === $(user).text().trim()) {
                                             this.time = time;
@@ -49,9 +48,9 @@ define(['app/common', 'jquery.min'], function (common) {
                                             console.log('add: ' + $(user).text().trim());
                                         }
                                     });
-                                } else {
-                                    activity.push({ name: $(user).text(), time: time, server: name });
-                                    console.log('add: ' + $(user).text());
+                                } else if ($(user).text().trim() !== '...') {
+                                    activity.push({ name: $(user).text().trim(), time: time, server: name });
+                                    console.log('add1: ' + $(user).text().trim());
                                 }
                             }
                             i++;
