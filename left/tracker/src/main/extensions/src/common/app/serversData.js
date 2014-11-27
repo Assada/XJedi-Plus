@@ -29,7 +29,8 @@ define(['app/common', 'jquery.min'], function (common) {
                     $(player_list).each(function () {
                         var $thisP = $(this),
                             users = $thisP.find('div[style*="width:140px; height:14px; border-bottom:1px solid #C0C6CC;"]'),
-                            i = 1;
+                            i = 1,
+                            activName = '';
                         $(users).each(function () {
                             var user = $(this).html().replace('                    ', '').trim();
                             if (i !== 1) {
@@ -37,30 +38,16 @@ define(['app/common', 'jquery.min'], function (common) {
                             }
                             if (user.replace('                ', '').length !== 0) {
                                 playersInServer.push({ user: user, score: +scores[i]});
-                               /* if (activity.length !== 0 && $(user).text().trim() !== '...') {
-                                    $(activity).each(function () {
-                                        if (this.name === $(user).text().trim()) {
-                                            this.time = time;
-                                            this.server = $(user).text().trim();
-                                            console.log('upd ' + $(user).text().trim());
-                                        } else {
-                                            activity.push({ name: $(user).text(), time: time, server: name });
-                                            console.log('add: ' + $(user).text().trim());
-                                        }
-                                    });
-                                } else if ($(user).text().trim() !== '...') {
-                                    activity.push({ name: $(user).text().trim(), time: time, server: name });
-                                    console.log('add1: ' + $(user).text().trim());
-                                }*/
+                                activName = common.getName($(user).text().trim());
                                 if (_.find(activity, function (item) {
-                                        return item.name === $(user).text().trim();
+                                        return item.name === activName;
                                     }) && $(user).text().trim() !== '...') {
                                     this.time = time;
-                                    this.server = $(user).text().trim();
-                                    console.log('upd ' + $(user).text().trim());
+                                    this.server = name;
+                                    console.log('upd ' + activName);
                                 } else {
-                                    activity.push({ name: $(user).text().trim(), time: time, server: name });
-                                    console.log('add1: ' + $(user).text().trim());
+                                    activity.push({ name: activName, time: time, server: name });
+                                    console.log('add1: ' + activName);
                                 }
                             }
                             i++;
