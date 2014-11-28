@@ -4,7 +4,25 @@
 // @require lib/jquery.min.js
 // @require lib/underscore.min.js
 // ==/UserScript==
+
 window.addEventListener('load', function () {
+    console.log(document.URL.indexOf('index.php?showuser') + 1, document.URL);
+    if (document.URL.indexOf('index.php?showuser') + 1) {
+        var name = $('.nickname').text().trim(),
+            activity = kango.storage.getItem('playersActivity') || [],
+            nameData = _.find(activity, function (item) {
+                return item.name === name;
+            }),
+            time = (nameData !== undefined) ? new Date(nameData.time) : 'undefined';
+        console.log(time);
+        if (nameData !== undefined) {
+            $($('table.borderwrap>tbody')[0]).append('<tr><td class="row2" valign="top"><b>Був помічений на серверах JA</b></td><td class="row1"><b>' +
+                time.getDate() + '.' + (time.getMonth() + 1) + ' ' + time.getHours() + ':' + time.getMinutes() +
+                '</b> на сервері <b>' +
+                nameData.server +
+                '</b></td></tr>');
+        }
+    }
     if (kango.storage.getItem('forumFeatures')) {
         var nickList = kango.storage.getItem('nickList') || [],
             $nickDOM = $('.nickname');
