@@ -22,7 +22,7 @@ define(['jquery.min'], function () {
             return test;
         },
         getName: function (name) {
-            var namee = name.match(/[a-zA-Z\s-]+/g),
+            var namee = name.replace('Pl.Moff', 'PlMoff').replace('Fl.Moff', 'PlMoff').match(/[a-zA-Z\s-]+/g),
                 lengthOld = 0;
             if (namee) {
                 if (namee[0].trim() !== 'Guest' && namee[0].trim() !== '...') {
