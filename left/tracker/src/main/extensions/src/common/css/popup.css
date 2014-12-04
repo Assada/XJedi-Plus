@@ -1,4 +1,23 @@
-body {
-    width: 710px;
-    height: 510px;
+html {
+    width: 400px;
+    height: 220px;
+}
+html {
+    max-height: 220px;
+}
+.block {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+tr {display: block; }
+th, td { width: 300px; }
+
+.nav-tabs li {
+    font-size: 11px;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 100%;
 }
