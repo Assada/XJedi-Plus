@@ -58,7 +58,7 @@ define(['app/common', 'jquery.min'], function (common) {
                         });
                     });
                     allServers.push({
-                        name : name,
+                        name : _.escape(name),
                         currPlayers : currPlayers,
                         maxPlayers : maxPlayers,
                         map: map,
