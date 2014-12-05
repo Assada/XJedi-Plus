@@ -16,6 +16,7 @@ define(['app/common', 'jquery.min'], function (common) {
                 kango.console.log('parser start');
                 var playersInServer = [],
                     $this = $(this),
+                    allInServer = +$('span[style="font-size:large; color:#900000;"]').text(),
                     server_names = ($this.find('.header1').text()).split(/\n/);
                 if (server_names[1]) {
                     var name = server_names[1].replace(' ', '').trim().replace(/XJedi |UA |- /gi, ''),
@@ -66,6 +67,7 @@ define(['app/common', 'jquery.min'], function (common) {
                         players: playersInServer
                     });
                 }
+                kango.storage.setItem('allInServer', allInServer);
             });
             kango.storage.setItem('playersActivity', activity);
             return allServers;
