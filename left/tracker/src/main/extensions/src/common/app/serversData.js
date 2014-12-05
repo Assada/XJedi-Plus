@@ -40,10 +40,14 @@ define(['app/common', 'jquery.min'], function (common) {
                                 playersInServer.push({ user: user, score: +scores[i]});
                                 activName = common.getName($(user).text().trim());
                                 if (activName !== false && _.find(activity, function (item) {
-                                        return item.name === activName;
-                                    }) && $(user).text().trim() !== '...') {
-                                    this.time = time;
-                                    this.server = name;
+                                    return item.name === activName;
+                                }) && $(user).text().trim() !== '...') {
+                                    $(activity).each(function () {
+                                        if (this.name === activName) {
+                                            this.time = time;
+                                            this.server = name;
+                                        }
+                                    });
                                     console.log('upd ' + activName);
                                 } else if (activName !== false) {
                                     activity.push({ name: activName, time: time, server: name });
