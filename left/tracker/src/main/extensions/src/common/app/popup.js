@@ -5,4 +5,14 @@ var serverInfo = kango.storage.getItem('playersActivity') || [],
 $(serverInfo).each(function () {
 
 });*/
-$('.selectpicker').selectpicker();
+KangoAPI.onReady(function() {
+    var test = _.template($('#template').text());
+    if ($('.monitor').html(test({'servers' : kango.storage.getItem('serversData')}))) {
+        $('.selectpicker').selectpicker();
+    }
+    $('select').on('change', function (e) {
+        var $optionSelected = $("option:selected", this),
+            valueSelected = this.value;
+        console.log(valueSelected);
+    });
+});
