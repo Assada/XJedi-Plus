@@ -11,13 +11,14 @@ define(['app/common', 'jquery.min'], function (common) {
         parser: function (content) {
             var allServers = [],
                 activity = kango.storage.getItem('playersActivity') || [],
-                time = new Date().getTime();
+                time = new Date().getTime(),
+                allInServer;
             $(content).each(function () {
                 kango.console.log('parser start');
                 var playersInServer = [],
                     $this = $(this),
-                    allInServer = +$('span[style="font-size:large; color:#900000;"]').text(),
                     server_names = ($this.find('.header1').text()).split(/\n/);
+                allInServer = ($(this).find('span[style="font-size:large; color:#900000;"]').text() !== '') ? +$(this).find('span[style="font-size:large; color:#900000;"]').text() : allInServer;
                 if (server_names[1]) {
                     var name = server_names[1].replace(' ', '').trim().replace(/XJedi |UA |- /gi, ''),
                         players = $this.find('.header2[style!="padding-left:4px;"]').text().replace('                   ', '').split(/\n/)[2].trim().split('/'),
@@ -67,8 +68,9 @@ define(['app/common', 'jquery.min'], function (common) {
                         players: playersInServer
                     });
                 }
-                kango.storage.setItem('allInServer', allInServer);
+                console.log(allInServer);
             });
+            kango.storage.setItem('allInServer', allInServer);
             kango.storage.setItem('playersActivity', activity);
             return allServers;
         }
