@@ -8,10 +8,18 @@ define(['app/common', 'jquery.min'], function (common) {
                 test = $.parseHTML(html);
             kango.storage.setItem('serversData', main.parser(test));
         },
+        inform: function (user, server) {
+            kango.console.log('notif ' + user);
+            kango.ui.notifications.show(user + ' замечен на сервере!', user + ' был замечен на сервере ' + server, '/icons/userOnServer.png', function () {
+                kango.console.log('Notification click');
+            });
+        },
         parser: function (content) {
             var allServers = [],
                 activity = kango.storage.getItem('playersActivity') || [],
+                nickList = kango.storage.getItem('nickList') || [],
                 time = new Date().getTime(),
+                informInServer = [],
                 allInServer;
             $(content).each(function () {
                 kango.console.log('parser start');
@@ -46,14 +54,27 @@ define(['app/common', 'jquery.min'], function (common) {
                                 }) && $(user).text().trim() !== '...') {
                                     $(activity).each(function () {
                                         if (this.name === activName) {
+                                            if (_.indexOf(kango.storage.getItem('nickList'), activName) + 1) {
+                                                kango.console.log(name + ' ' + this.server);
+                                                if (this.server === name) {
+                                                    if ((+time - +this.time) > 30 * 60 * 1000) {
+                                                        kango.console.log('inform about ' + activName);
+                                                        main.inform(activName, name);
+                                                    }
+                                                    kango.console.log('OP!!!!!!! ' + (+time - +this.time));
+                                                } else {
+                                                    kango.console.log('inform about ' + activName);
+                                                    main.inform(activName, name);
+                                                }
+                                            }
                                             this.time = time;
                                             this.server = name;
                                         }
                                     });
-                                    console.log('upd ' + activName);
+                                    kango.console.log('upd ' + activName);
                                 } else if (activName !== false) {
                                     activity.push({ name: activName, time: time, server: name });
-                                    console.log('add1: ' + activName);
+                                    kango.console.log('add1: ' + activName);
                                 }
                             }
                             i++;
@@ -68,7 +89,7 @@ define(['app/common', 'jquery.min'], function (common) {
                         players: playersInServer
                     });
                 }
-                console.log(allInServer);
+                kango.console.log(allInServer);
             });
             kango.storage.setItem('allInServer', allInServer);
             kango.storage.setItem('playersActivity', activity);
