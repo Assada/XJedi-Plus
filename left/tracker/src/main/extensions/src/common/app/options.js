@@ -1,4 +1,3 @@
-console.log('test');
 window.addEventListener('load', function () {
     var addNick = document.getElementById('addNick'),
         clearNick = document.getElementById('clearNick'),
@@ -28,7 +27,6 @@ window.addEventListener('load', function () {
             }
             $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
         }
-        console.log(nickList);
     });
     clearNick.addEventListener('click', function () {
         $btnClearNick.attr('disabled', 'disabled');
@@ -41,13 +39,11 @@ window.addEventListener('load', function () {
         if ($target.hasClass('delete')) {
             var $nick = $target.parent().text().replace(' Убрать его', '').trim();
             $target.parent().remove();
-            console.log(':' + $nick);
             if (nickList.indexOf($nick) > -1) {
                 if (nickList.splice(nickList.indexOf($nick), 1)) {
                     kango.storage.setItem('nickList', nickList);
                 }
             }
-            console.log(nickList);
             if (nickList.length === 0) {
                 $btnClearNick.attr('disabled', 'disabled');
                 $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');

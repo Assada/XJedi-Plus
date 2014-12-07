@@ -14,9 +14,6 @@ define(['jquery.min'], function () {
                 async: false,
                 success: function (data) {
                     test = data;
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.error(jqXHR, textStatus, errorThrown);
                 }
             });
             return test;
