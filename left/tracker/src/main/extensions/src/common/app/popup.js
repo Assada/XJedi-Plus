@@ -1,6 +1,5 @@
 KangoAPI.onReady(function() {
     function loadd() {
-        console.log('load2');
         var test = _.template($('#template').text()),
             server = kango.storage.getItem('popUpLastServerOpenId') || 0;
         if ($('.monitor').html(test({'servers' : kango.storage.getItem('serversData')}))) {
@@ -16,13 +15,10 @@ KangoAPI.onReady(function() {
                 $('#server-' + $serverId).show();
                 kango.storage.setItem('popUpLastServerOpenId', +$serverId);
             }
-            console.log($('#server' + $serverId));
-            console.log(this);
         });
     }
     loadd();
     setInterval(function () {
-        console.log('load1');
         loadd();
     }, 10 * 1000);
 });
