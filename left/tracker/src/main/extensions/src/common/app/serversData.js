@@ -9,9 +9,13 @@ define(['app/common', 'jquery.min'], function (common) {
             kango.storage.setItem('serversData', main.parser(test, activity, nickList, time));
         },
         inform: function (user, server) {
-            kango.ui.notifications.show(user + ' замечен на сервере!', user + ' был замечен на сервере ' + server, '/icons/userOnServer.png', function () {
-                kango.console.log('Notification click');
-            });
+            var time = new Date(),
+                inform = kango.storage.getItem('trackerInform') || false;
+            if (inform) {
+                kango.ui.notifications.show(user + ' замечен на сервере!', user + ' в ' + time.getHours() + ':' + time.getMinutes() + ' был замечен на сервере ' + server, '/icons/userOnServer.png', function () {
+                    kango.console.log('Notification click');
+                });
+            }
         },
         parser: function (content, activity, nickList, time) {
             var allServers = [],
@@ -30,7 +34,7 @@ define(['app/common', 'jquery.min'], function (common) {
                     scores = false;
                 allInServer = ($(this).find('span[style="font-size:large; color:#900000;"]').text() !== '') ? +$(this).find('span[style="font-size:large; color:#900000;"]').text() : allInServer;
                 if (server_names[1]) {
-                    name = server_names[1].replace(' ', '').trim().replace(/XJedi |UA |- /gi, '');
+                    name = _.escape(server_names[1].replace(' ', '').trim().replace(/XJedi |UA |- /gi, ''));
                     players = $this.find('.header2[style!="padding-left:4px;"]').text().replace('                   ', '').split(/\n/)[2].trim().split('/');
                     currPlayers = +players[0].replace('Гравців ', '');
                     maxPlayers = +players[1];
@@ -78,7 +82,7 @@ define(['app/common', 'jquery.min'], function (common) {
                         });
                     });
                     allServers.push({
-                        name : _.escape(name),
+                        name : name,
                         currPlayers : currPlayers,
                         maxPlayers : maxPlayers,
                         map: map,
