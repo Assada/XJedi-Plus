@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
-    var addNick = document.getElementById('addNick'),
-        clearNick = document.getElementById('clearNick'),
+    var $addNick = $('#addNick'),
+        $clearNick = $('#clearNick'),
         $btnClearNick = $('#btnClearNickList'),
         $listOfNick = $('#nickList'),
         $profileLink = $('#profileLink'),
@@ -22,10 +22,10 @@ window.addEventListener('load', function () {
     $.each(nickList, function (id, nick) {
         $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
     });
-    addNick.addEventListener('click', function () {
+    $addNick.on('click', function () {
         var $nick = $('#nickName'),
             $nickVal = $nick.val();
-        if (!(_.indexOf(nickList, $nickVal) + 1) && $nickVal.length > 0) {
+        if ((_.indexOf(nickList, $nickVal) + 1) === 0 && $nickVal.length > 0) {
             nickList.push($nickVal);
             kango.storage.setItem('nickList', nickList);
             $nick.val('');
@@ -37,16 +37,17 @@ window.addEventListener('load', function () {
             $('#countOfPlayers').html(nickList.length);
         }
     });
-    clearNick.addEventListener('click', function () {
+    $clearNick.on('click', function () {
         $btnClearNick.attr('disabled', 'disabled');
         $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
         kango.storage.removeItem('nickList');
         nickList = [];
     });
     document.querySelector('body').addEventListener('click', function (event) {
-        var $target = $(event.target);
+        var $target = $(event.target),
+            $nick;
         if ($target.hasClass('delete')) {
-            var $nick = $target.parent().text().replace(' Убрать его', '').trim();
+            $nick = $target.parent().text().replace(' Убрать его', '').trim();
             $target.parent().remove();
             if (nickList.indexOf($nick) > -1) {
                 if (nickList.splice(nickList.indexOf($nick), 1)) {
