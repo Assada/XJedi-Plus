@@ -6,7 +6,13 @@ window.addEventListener('load', function () {
         $profileLink = $('#profileLink'),
         $forumFeatures = $('input#forumFeatures'),
         $checkLvl = $('input#checkLvl'),
-        nickList = kango.storage.getItem('nickList') || [];
+        nickList = kango.storage.getItem('nickList') || [],
+        randomIndex = Math.floor(Math.random() * nickList.length),
+        hash = window.location.hash;
+    hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+    if (kango.storage.getItem('firstInstall') === null) {
+        kango.storage.setItem('firstInstall', true);
+    }
     if (nickList.length === 0) {
         $btnClearNick.attr('disabled', 'disabled');
         $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
@@ -26,6 +32,7 @@ window.addEventListener('load', function () {
                 $listOfNick.empty();
             }
             $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
+            $('#countOfPlayers').html(nickList.length);
         }
     });
     clearNick.addEventListener('click', function () {
@@ -42,6 +49,7 @@ window.addEventListener('load', function () {
             if (nickList.indexOf($nick) > -1) {
                 if (nickList.splice(nickList.indexOf($nick), 1)) {
                     kango.storage.setItem('nickList', nickList);
+                    $('#countOfPlayers').html(nickList.length);
                 }
             }
             if (nickList.length === 0) {
@@ -68,6 +76,12 @@ window.addEventListener('load', function () {
             kango.storage.setItem('profileLink', $(this).val());
         }
     });
+    $('.nav-tabs a').on('click', function (e) {
+        $(this).tab('show');
+        var scrollmem = $('body').scrollTop();
+        window.location.hash = this.hash;
+        $('html,body').scrollTop(scrollmem);
+    });
     if (kango.storage.getItem('checkLvl')) {
         $checkLvl.bootstrapSwitch('state', true);
         $profileLink.removeAttr('disabled');
@@ -78,7 +92,9 @@ window.addEventListener('load', function () {
     $forumFeatures.bootstrapSwitch('state', kango.storage.getItem('forumFeatures') || false);
     $('.tooltipp').tooltip();
     $('#lvlNo').html(kango.storage.getItem('checkLvl') ? '' : '<abbr><strong> НЕ </strong></abbr>');
-    $('#yourLvl').html(kango.storage.getItem('profileLvl') || ' 1 ');
+    $('#yourLvl').html(kango.storage.getItem('profileLvl') || ' вашего ');
     $('#forumFeatures, #checkLvl').bootstrapSwitch();
     $profileLink.val(kango.storage.getItem('profileLink') || '');
+    $('#countOfPlayers').html(nickList.length);
+    $('#randName').html(nickList[randomIndex]);
 });

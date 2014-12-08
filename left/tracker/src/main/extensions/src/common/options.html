@@ -17,20 +17,20 @@
                 <div class="tabbable-line">
                     <ul class="nav nav-tabs ">
                         <li class="active">
-                            <a href="#settings_1" data-toggle="tab">
+                            <a href="#all" data-toggle="tab">
                                 Все настройки </a>
                         </li>
                         <li>
-                            <a href="#settings_2" data-toggle="tab">
-                                Настрйоки монитора уровня </a>
+                            <a href="#tracker" data-toggle="tab">
+                                Настрйоки слежки за игроками </a>
                         </li>
                         <li>
-                            <a href="#settings_3" data-toggle="tab">
-                                Настройки чего-то </a>
+                            <a href="#information" data-toggle="tab">
+                                Информация </a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="settings_1">
+                        <div class="tab-pane active" id="all">
                             <div class="checkbox">
                                 <label>
                                     Нам добавлять на форум всякие штуки? <input type="checkbox" id="forumFeatures" data-on-text="Да" data-off-text="Нет" data-label-width="0" data-size="small">
@@ -48,9 +48,9 @@
                                 <input type="text" class="form-control" id="profileLink" placeholder="Вставляйте сюда ссылку на вашу страничку" disabled="disabled">
                             </div>
                         </div>
-                        <div class="tab-pane" id="settings_2">
+                        <div class="tab-pane" id="tracker">
                             <div id="nicks" style="padding-bottom: 15px">
-                                <p><strong>Мы сейчас отслеживаем для вас икроков с именами:</strong>
+                                <p><strong>Мы сейчас отслеживаем для вас <span id="countOfPlayers"></span> игроков с именами:</strong>
                                 <div id="nickList">
 
                                 </div>
@@ -66,8 +66,8 @@
                             </div>
 
                         </div>
-                        <div class="tab-pane" id="settings_3">
-                            Настройки чего-то
+                        <div class="tab-pane" id="information">
+                            <h4 class="text-center">Тут пока ничего нет.</h4>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 <div class="modal-body">
                     <p><small>Похоже вы потеряли интерес ко всему и больше не хотите следить за игроками. Что же... Мы можем помочь вам и в этом!</small></p>
 
-                    <p class="text-danger">Это действие удалит все имена из списка слежки за уровнем! <i><small>И не говорите что мы вас не предупреждали</small></i></p>
+                    <p class="text-danger">Это действие удалит все имена из списка слежки за уровнем и активностью! <i><small>И не говорите что мы вас не предупреждали!</small></i></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Я передумал</button>
@@ -105,7 +105,7 @@
                     <h4 class="modal-title" id="addNewNickLabel">Хочу следить за...</h4>
                 </div>
                 <div class="modal-body">
-                    <p><small>Вы знаете, для вас нам ничего не жалко! Мы поможем вам следить не только за игроком <i>Starboy</i> но и за многими другими.</small></p>
+                    <p><small>Вы знаете, для вас нам ничего не жалко! Мы поможем вам следить не только за игроком <i id="randName">Starboy</i> но и за многими другими.</small></p>
 
                     <p>Введите имя в поле ниже, что бы мы начали его искать.</p>
                     <input id="nickName" class="form-control" type="text" placeholder="Только будьте внимательны и вводите имя без клана и звания - это нам не нужно."/>

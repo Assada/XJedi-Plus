@@ -4,7 +4,9 @@ requirejs.config({
         app: '../app'
     }
 });
-kango.console.log('App loaded');
+if (kango.storage.getItem('firstInstall') === null) {
+    kango.ui.optionsPage.open();
+}
 require(
     ['app/od', 'app/serversData.js'],
     function (od, server) {
