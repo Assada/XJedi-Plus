@@ -20,6 +20,8 @@ define(['app/common', 'jquery.min'], function (common) {
         parser: function (content, activity, nickList, time) {
             var allServers = [],
                 allInServer = false;
+//                oldInfo = kango.storage.getItem('allInServer'),
+//                nOnServer = kango.storage.getItem('nOnServer');
             $(content).each(function () {
                 var playersInServer = [],
                     $this = $(this),
@@ -32,6 +34,7 @@ define(['app/common', 'jquery.min'], function (common) {
                     mapSrc = false,
                     player_list = false,
                     scores = false;
+//                    oldServer;
                 allInServer = ($(this).find('span[style="font-size:large; color:#900000;"]').text() !== '') ? +$(this).find('span[style="font-size:large; color:#900000;"]').text() : allInServer;
                 if (server_names[1]) {
                     name = _.escape(server_names[1].replace(' ', '').trim().replace(/XJedi |UA |- /gi, ''));
@@ -81,6 +84,17 @@ define(['app/common', 'jquery.min'], function (common) {
                             i++;
                         });
                     });
+                    /*oldServer = _.find(oldInfo, function (item) {
+                        return item.name === name;
+                    });
+                    $(nOnServer).each(function () {
+                        if (this.name === name && ()) {
+
+                        }
+                    });*/
+/*                    if (oldServer.currPlayers !== currPlayers && +currPlayers >= 5) {
+
+                    }*/
                     allServers.push({
                         name : name,
                         currPlayers : currPlayers,
@@ -92,9 +106,11 @@ define(['app/common', 'jquery.min'], function (common) {
                 }
             });
             kango.storage.setItem('allInServer', allInServer);
+//            kango.storage.setItem('nOnServer', nOnServer);
             kango.storage.setItem('playersActivity', activity);
             return allServers;
         }
     };
+    //{{name: 'CS', lastTime: 343242342, players: 5}, {name: '<Holy>', lastTime: 343242342, players: 10}}
     return main;
 });
