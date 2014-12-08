@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3>Настройки</h3>
+            <h3><img src="/icons/st.png" alt="logo" style="width: 32px; padding-right: 10px"/> Настройки </h3>
 
             <div class="tabbable-panel">
                 <div class="tabbable-line">
@@ -36,6 +36,11 @@
                                     Нам добавлять на форум всякие штуки? <input type="checkbox" id="forumFeatures" data-on-text="Да" data-off-text="Нет" data-label-width="0" data-size="small">
                                 </label>
                             </div>
+                            <div class="checkbox">
+                                <label>
+                                    Уведомлять вас если кто-то из <a href="#tracker">списка</a> зашел на сервер? <input type="checkbox" id="trackerInform" data-on-text="Да" data-off-text="Нет" data-label-width="0" data-size="small">
+                                </label>
+                            </div>
 
                             <div class="form-group">
                                 <label for="profileLink">
@@ -50,7 +55,7 @@
                         </div>
                         <div class="tab-pane" id="tracker">
                             <div id="nicks" style="padding-bottom: 15px">
-                                <p><strong>Мы сейчас отслеживаем для вас <span id="countOfPlayers"></span> игроков с именами:</strong>
+                                <p><strong>Мы сейчас <strong id="trackerStatus" class="text-danger tooltipp" title="Включите в натсрйоках"></strong> отслеживаем для вас <span id="countOfPlayers"></span> игроков с именами:</strong>
                                 <div id="nickList">
 
                                 </div>
@@ -62,12 +67,13 @@
                             </div>
                             <hr/>
                             <div id="lvl">
-                                <p>Мы вас <span id="lvlNo" class="tooltipp" data-toggle="tooltip" data-placement="top" title="Включите в натсрйоках"></span> уведомим если кто-то достигнет <span id="yourLvl"><strong>1</strong></span> уровня!</p>
+                                <p>А еще мы вас <span id="lvlNo" class="tooltipp" data-toggle="tooltip" data-placement="top" title="Включите в натсрйоках"></span> уведомим если кто-то достигнет <span id="yourLvl"><strong>1</strong></span> уровня!</p>
                             </div>
 
                         </div>
                         <div class="tab-pane" id="information">
                             <h4 class="text-center">Тут пока ничего нет.</h4>
+                            <img src="/icons/huinya.png" alt="" class="center-block"/>
                         </div>
                     </div>
                 </div>
