@@ -9,10 +9,13 @@ define(['app/common', 'jquery.min'], function (common) {
             kango.storage.setItem('serversData', main.parser(test, activity, nickList, time));
         },
         inform: function (user, server) {
-            var time = new Date();
-            kango.ui.notifications.show(user + ' замечен на сервере!', user + ' в ' + time.getHours() + ':' + time.getMinutes() + ' был замечен на сервере ' + server, '/icons/userOnServer.png', function () {
-                kango.console.log('Notification click');
-            });
+            var time = new Date(),
+                inform = kango.storage.getItem('trackerInform') || false;
+            if (inform) {
+                kango.ui.notifications.show(user + ' замечен на сервере!', user + ' в ' + time.getHours() + ':' + time.getMinutes() + ' был замечен на сервере ' + server, '/icons/userOnServer.png', function () {
+                    kango.console.log('Notification click');
+                });
+            }
         },
         parser: function (content, activity, nickList, time) {
             var allServers = [],
