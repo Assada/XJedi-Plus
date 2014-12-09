@@ -1,19 +1,18 @@
-/**
- * Created by Assada on 20.11.2014.
- */
 define(['jquery.min'], function () {
     return {
         getPageHtml: function (url) {
-            var test = [];
-            $.ajax({
-                url: url,
-                global: false,
-                cache: false,
-                type: "GET",
-                dataType: "text",
-                async: false,
-                success: function (data) {
-                    test = data;
+            var test = [],
+                details = {
+                    method: 'GET',
+                    url: url,
+                    async: false,
+                    contentType: 'text'
+                };
+            kango.xhr.send(details, function (data) {
+                if (data.status === 200 && data.response !== null) {
+                    test = data.response;
+                } else {
+                    kango.console.log('something went wrong');
                 }
             });
             return test;
