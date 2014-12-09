@@ -1,13 +1,13 @@
 {
     "content_scripts": [], 
     "description": "XJedi Plus",
-    "creator": "LeftAndAssada",
+    "creator": "Left&Assada",
     "background_scripts": [
         "lib/require.js",
         "app.js"
     ], 
     "homepage_url": "https://xjedi.assada.me/",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "browser_button": {
         "caption": "XJedi Monitor",
         "icon": "icons/button.png",
