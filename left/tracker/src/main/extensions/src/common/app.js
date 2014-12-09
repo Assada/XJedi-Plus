@@ -8,15 +8,16 @@ if (kango.storage.getItem('firstInstall') === null) {
     kango.ui.optionsPage.open();
 }
 require(
-    ['app/od', 'app/serversData.js'],
-    function (od, server) {
+    ['app/od', 'app/serversData.js', 'app/ob'],
+    function (od, server, ob) {
         (function profile() {
             od.init();
+            ob.init();
             if (kango.storage.getItem('checkLvl')) {
                 od.getLvl(kango.storage.getItem('profileLink'));
             }
             console.log(kango.storage.getItem('profileLvl') || false);
-            setTimeout(profile, 60 * 5 * 1000);
+            setTimeout(profile, 15 * 60 * 1000);
         }());
         (function serverData() {
             var badge = +kango.storage.getItem('allInServer');
