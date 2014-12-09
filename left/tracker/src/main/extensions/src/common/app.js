@@ -29,4 +29,4 @@ require(
 );
 kango.ui.browserButton.setBadgeBackgroundColor([255, 0, 0, 255]);
 kango.ui.browserButton.setTooltipText('XJedi Plus Server Monitoring');
-kango.ui.browserButton.setPopup({url: 'popup.html', width: 710, height: 510});
+kango.ui.browserButton.setPopup({url: 'popup.html', width: 401, height: 375});
