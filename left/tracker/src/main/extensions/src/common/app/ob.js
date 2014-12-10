@@ -14,7 +14,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
                     $title = $this.find('div.lightBack[style="width:146px; margin-right: 2px"]').text().trim(),
                     $map = $this.find('div.lightBack[style="width:100px; "]').text().trim(),
                     $players = $this.find('div.lightBack[style="width:42px; "]').text().trim(),
-                    $id = +$this.find('div.lightBack[style="background-image:url(\'../pics/gotoAvailable.png\');"]').attr('onclick').replace('window.location = \'../index.jsp?com=ob&id=', '').replace("'", ''),
+                    $id = +($this.find('div.lightBack[style="background-image:url(\'../pics/gotoAvailable.png\');"]').attr('onclick').replace('window.location = \'../index.jsp?com=ob&id=', '').replace("'", '')),
                     informed = kango.storage.getItem('odInformed') || [];
                 if (_.indexOf(informed, $id) + 1 === 0) {
                     if (main.inform($date, $img, $title, $map, $players, $id)) {
