@@ -18,12 +18,12 @@ define(['jquery.min'], function () {
             return test;
         },
         getName: function (name) {
-            var namee = name.replace('Pl.Moff', 'PlMoff').replace('Fl.Moff', 'PlMoff').match(/[a-zA-Z\s-]+/g),
+            var namee = name.replace('Pl.Moff', 'PlMoff').replace('Fl.Moff', 'PlMoff').match(/[a-zA-Z-\s]+/g),
                 lengthOld = 0;
             if (namee) {
                 if (namee[0].trim() !== 'Guest' && namee[0].trim() !== '...') {
                     lengthOld = namee.length;
-                    if (lengthOld  >= 4) {
+                    if (lengthOld >= 4) {
                         namee.pop();
                         namee.shift();
                     }
@@ -34,12 +34,9 @@ define(['jquery.min'], function () {
                         namee.shift();
                     }
                     return namee[0].trim();
-                } else {
-                    return false;
                 }
-            } else {
-                return false;
             }
+            return false;
         }
     };
 });
