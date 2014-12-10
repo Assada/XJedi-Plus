@@ -11,7 +11,9 @@ window.addEventListener('load', function () {
         hash = window.location.hash,
         $inform = $('#trackerInform'),
         $trackStatus = $('#trackerStatus');
-    hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+    if (hash) {
+        $('ul.nav a[href="' + hash + '"]').tab('show');
+    }
     if (kango.storage.getItem('firstInstall') === null) {
         kango.storage.setItem('firstInstall', true);
     }
@@ -81,13 +83,13 @@ window.addEventListener('load', function () {
             $trackStatus.html(' НЕ ');
         }
     });
-    $profileLink.on('keyup', function (event, state) {
+    $profileLink.on('keyup', function () {
         var regexp = /(http|https):\/\/xjedi\.com\/forum\/index\.php\?showuser=\d{1,5}/i;
         if (regexp.test($(this).val())) {
             kango.storage.setItem('profileLink', $(this).val());
         }
     });
-    $('.nav-tabs a').on('click', function (e) {
+    $('.nav-tabs a').on('click', function () {
         $(this).tab('show');
         var scrollmem = $('body').scrollTop();
         window.location.hash = this.hash;
