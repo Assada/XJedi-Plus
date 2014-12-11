@@ -66,5 +66,11 @@ $RECYCLE.BIN/
 
 left/tracker/src/main/extensions/output/
 left/tracker/src/main/extensions/certificates/
+left/tracker/src/main/extensions/src/chrome/
+left/tracker/src/main/extensions/src/firefox/
+left/tracker/src/main/extensions/src/ie/
+left/tracker/src/main/extensions/src/opera/
+left/tracker/src/main/extensions/src/safari/
+left/tracker/src/test/
 *.bat
 *.pem
