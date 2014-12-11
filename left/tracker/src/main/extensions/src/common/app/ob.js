@@ -14,11 +14,11 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
                     $title = $this.find('div.lightBack[style="width:146px; margin-right: 2px"]').text().trim(),
                     $map = $this.find('div.lightBack[style="width:100px; "]').text().trim(),
                     $players = $this.find('div.lightBack[style="width:42px; "]').text().trim(),
-                    $id = +($this.find('div.lightBack[style="background-image:url(\'../pics/gotoAvailable.png\');"]').attr('onclick').replace('window.location = \'../index.jsp?com=ob&id=', '').replace("'", '')),
+                    $id = $this.find('div.lightBack[style="background-image:url(\'../pics/gotoAvailable.png\');"]').attr('onclick').replace('window.location = \'../index.jsp?com=ob&id=', '').replace("'", ''),
                     informed = kango.storage.getItem('odInformed') || [];
-                if (_.indexOf(informed, $id) + 1 === 0) {
-                    if (main.inform($date, $img, $title, $map, $players, $id)) {
-                        informed.push($id);
+                if (_.indexOf(informed, +$id) + 1 === 0) {
+                    if (main.inform($date, $img, $title, $map, $players, +$id)) {
+                        informed.push(+$id);
                         kango.storage.setItem('odInformed', informed);
                     }
                 }
@@ -26,7 +26,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
         },
         inform: function (date, img, title, map, players, id) {
             kango.ui.notifications.show('Битва на ' + date + '!', 'Битва ' + title + ' состоится на карте ' + map + ' ( ' + players + ') ', '/icons/ob.png', function () {
-                kango.browser.tabs.create({url: 'http://xjedi.com/index.jsp?com=ob&id=' + id});
+                kango.browser.tabs.create({url: 'http://xjedi.com/index.jsp?com=ob&id=' + (+id)});
             });
             return true;
         }
