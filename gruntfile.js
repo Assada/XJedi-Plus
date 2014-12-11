@@ -11,6 +11,18 @@ module.exports = function (grunt) {
                 ext: '.js'   // replace .js to .min.js
             }
         },
+        htmlmin: {                                     // Task
+            dist: {                                      // Target
+                options: {                                 // Target options
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: {                                   // Dictionary of files
+                    'left/tracker/src/main/extensions/src/common/options.html': 'left/tracker/src/main/extensions/src/common/options.html',     // 'destination': 'source'
+                    'left/tracker/src/main/extensions/src/common/popup.html': 'left/tracker/src/main/extensions/src/common/popup.html'
+                }
+            }
+        },
         watch: {
             js:  { files: 'left/tracker/src/main/extensions/src/common/app/*.js', tasks: [ 'uglify' ] }
         }
@@ -19,9 +31,10 @@ module.exports = function (grunt) {
 // load plugins
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
 // register at least this one task
-    grunt.registerTask('default', [ 'uglify' ]);
+    grunt.registerTask('default', [ 'uglify', 'htmlmin' ]);
 
 
 };
