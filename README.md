@@ -1,3 +1,8 @@
+XJedi Plus ![image](http://ci.assada.me:8080/job/XJedi-Plus/badge/icon)
+==============
+ 
+Плагин для портала http://xjedi.com/
+
 **Что уже реализовано:**
 - [x]  Уведомление о том, что %nick% зашел на сервер.
 - [x] Уведомление о том, что кто-то получил ваш уровень.
@@ -22,11 +27,5 @@
 
 **Поддержка браузеров:**
 ![image](https://cloud.githubusercontent.com/assets/1472664/5331302/9ace67ca-7e2d-11e4-9da1-60d251784328.png) ![image](https://cloud.githubusercontent.com/assets/1472664/5331304/adc4d4cc-7e2d-11e4-832f-2a94669880b3.png) ![image](https://cloud.githubusercontent.com/assets/1472664/5331311/21162228-7e2e-11e4-8742-fd3888aa7484.png)
-
-
-
-
-
-
 
 @ynotLeft and @Assada
