@@ -2,8 +2,9 @@ KangoAPI.onReady(function () {
     function loadd() {
         var test = _.template($('#template').text()),
             server = kango.storage.getItem('popUpLastServerOpenId') || 0,
-            $selectpicker = $('.selectpicker');
+            $selectpicker;
         if ($('.monitor').html(test({'servers' : kango.storage.getItem('serversData')}))) {
+            $selectpicker = $('.selectpicker');
             $selectpicker.selectpicker();
             $('#server-' + server).show();
             $selectpicker.selectpicker('val', server);
