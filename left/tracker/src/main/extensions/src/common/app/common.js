@@ -6,12 +6,11 @@ define(['jquery.min'], function () {
                     method: 'GET',
                     url: url,
                     async: false,
-                    headers: {'Accept': 'application/json', 'Content-Type': 'text/plain'},
-                    contentType: 'json'
+                    contentType: 'text'
                 };
             kango.xhr.send(details, function (data) {
                 if (data.status === 200 && data.response !== null) {
-                    test = JSON.stringify(data.response);
+                    test = data.response;
                 } else {
                     kango.console.log('something went wrong');
                 }
