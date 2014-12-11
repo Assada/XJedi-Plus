@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         // define source files and their destinations
         uglify: {
             files: {
-                src: 'left/tracker/src/main/extensions/src/common/app/*.js',  // source files mask
+                src: ['left/tracker/src/main/extensions/src/common/app/*.js', '!left/tracker/src/main/extensions/src/common/app/forum.js'],  // source files mask
                 dest: 'left/tracker/src/main/extensions/src/common/app/',    // destination folder
                 expand: true,    // allow dynamic building
                 flatten: true,   // remove all unnecessary nesting
