@@ -1,4 +1,4 @@
-XJedi Plus ![image](http://ci.assada.me:8080/job/XJedi-Plus/badge/icon)
+XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon)
 ==============
  
 Плагин для портала http://xjedi.com/
