@@ -37,6 +37,7 @@ window.addEventListener('load', function () {
             }
             $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
             $('#countOfPlayers').html(nickList.length);
+            $('.tooltipp').tooltip();
         }
     });
     $clearNick.on('click', function () {
@@ -112,4 +113,6 @@ window.addEventListener('load', function () {
     $profileLink.val(kango.storage.getItem('profileLink') || '');
     $('#countOfPlayers').html(nickList.length);
     $('#randName').html(nickList[randomIndex]);
+    $('#logo').attr('src', kango.io.getResourceUrl('/icons/st.png'));
+    $('#opt-image').attr('src', kango.io.getResourceUrl('/icons/huinya.png'));
 });
