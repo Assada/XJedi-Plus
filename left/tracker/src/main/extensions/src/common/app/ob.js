@@ -25,7 +25,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
             });
         },
         inform: function (date, img, title, map, players, id) {
-            kango.ui.notifications.show('Битва на ' + date + '!', 'Битва ' + title + ' состоится на карте ' + map + ' ( ' + players + ') ', '/icons/ob.png', function () {
+            kango.ui.notifications.show('Битва на ' + date + '!', 'Битва ' + title + ' состоится на карте ' + map + ' ( ' + players + ') ', kango.io.getResourceUrl('/icons/ob.png'), function () {
                 kango.browser.tabs.create({url: 'http://xjedi.com/index.jsp?com=ob&id=' + id});
             });
             return true;
