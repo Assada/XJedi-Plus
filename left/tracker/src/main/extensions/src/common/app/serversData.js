@@ -12,7 +12,7 @@ define(['app/common', 'jquery.min'], function (common) {
             var time = new Date(),
                 inform = kango.storage.getItem('trackerInform') || false;
             if (inform) {
-                kango.ui.notifications.show(user + ' замечен на сервере!', user + ' в ' + time.getHours() + ':' + time.getMinutes() + ' был замечен на сервере ' + server, '/icons/userOnServer.png', function () {
+                kango.ui.notifications.show(user + ' замечен на сервере!', user + ' в ' + time.getHours() + ':' + time.getMinutes() + ' был замечен на сервере ' + server, kango.io.getResourceUrl('/icons/userOnServer.png'), function () {
                     kango.console.log('Notification click');
                 });
             }

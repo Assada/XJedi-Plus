@@ -46,7 +46,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
                     $.each(oldList, function (i, oldUser) {
                         if (oldUser.nick === newNick && +oldUser.lvl !== +newLvl) {
                             update = true; //ЛВЛ ИЗМЕНИЛСЯ
-                            kango.ui.notifications.show('Изменение уровня' + newNick, 'Уровень ' + newNick + ((oldUser.lvl > newLvl) ? ' понизился' : ' повысился') + ' до ' + newLvl, '/icons/userLvlUp.png', function () {
+                            kango.ui.notifications.show('Изменение уровня' + newNick, 'Уровень ' + newNick + ((oldUser.lvl > newLvl) ? ' понизился' : ' повысился') + ' до ' + newLvl, kango.io.getResourceUrl('/icons/userLvlUp.png'), function () {
                                 kango.console.log('Notification click');
                             });
                         }
@@ -68,7 +68,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
                 lvlNicks = kango.storage.getItem('lvlNicks') || {},
                 lvlNick = lvlNicks[nick] || {};
             if (+lvl === +mLvl && +lvlNick.lvl !== +lvl && +lvlNick.lvl !== +mLvl) {
-                kango.ui.notifications.show(nick + ' достиг ' + lvl + ' уровня!', 'Уровень ' + nick + ' стал приемлемым для вас!', '/icons/userLvlUp.png', function () {
+                kango.ui.notifications.show(nick + ' достиг ' + lvl + ' уровня!', 'Уровень ' + nick + ' стал приемлемым для вас!', kango.io.getResourceUrl('/icons/userLvlUp.png'), function () {
                     kango.console.log('Notification click');
                 });
                 lvlNicks[nick] = {lvl : +lvl};
