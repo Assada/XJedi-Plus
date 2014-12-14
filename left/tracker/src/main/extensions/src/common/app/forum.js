@@ -11,7 +11,10 @@ window.addEventListener('load', function () {
         name,
         activity,
         nameData,
-        time;
+        time,
+        image_src = kango.io.getResourceUrl('/icons/track.png');
+    document.styleSheets[1].addRule('.plusss', "opacity: 0.7; display: inline; width: 11px; height: 11px; cursor: pointer; padding-left: 11px; position: relative; top: 4px; left: 4px; background-image: url('" + image_src + "'); background-position: -13px 0; background-repeat: no-repeat;");
+    document.styleSheets[1].addRule('.minusss', "opacity: 0.7; display: inline; width: 11px; height: 11px; cursor: pointer; padding-left: 11px; position: relative; top: 4px; left: 4px; background-image: url('" + image_src + "'); background-position: 0 0; background-repeat: no-repeat;");
     if (document.URL.indexOf('index.php?showuser') + 1) {
         name = $nickDOM.text().trim();
         activity = kango.storage.getItem('playersActivity') || [];
@@ -30,7 +33,9 @@ window.addEventListener('load', function () {
     if (kango.storage.getItem('forumFeatures')) {
         $nickDOM.each(function () {
             if (_.indexOf(nickList, $(this).text()) + 1 === 0) {
-                $(this).append('<span style="color:#fff; cursor: pointer" data-nick="' + $(this).text() + '" title="Отслеживать изменения уровня игрока" class="plusss"> + </span>');
+                $(this).append('<div data-nick="' + $(this).text() + '" title="Отслеживать изменения уровня игрока" class="plusss"></div>');
+            } else {
+                $(this).append('<div data-nick="' + $(this).text() + '" title="Не отслеживать изменения уровня игрока" class="minusss"></div>');
             }
         });
         document.querySelector('body').addEventListener('click', function (event) {
@@ -40,7 +45,15 @@ window.addEventListener('load', function () {
                 nick = $target.attr('data-nick');
                 if (nickList.push(nick)) {
                     kango.storage.setItem('nickList', nickList);
-                    $nickDOM.find('[data-nick="' + nick + '"]').remove();
+                    $nickDOM.find('[data-nick="' + nick + '"]').attr('class', 'minusss');
+                }
+            } else {
+                if ($target.hasClass('minusss')) {
+                    nick = $target.attr('data-nick');
+                    if (nickList.splice(nickList.indexOf(nick), 1)) {
+                        kango.storage.setItem('nickList', nickList);
+                        $nickDOM.find('[data-nick="' + nick + '"]').attr('class', 'plusss');
+                    }
                 }
             }
         });
