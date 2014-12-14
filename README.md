@@ -1,4 +1,4 @@
-XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon)
+XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Assada/XJedi-Plus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ==============
  
 Плагин для портала http://xjedi.com/
