@@ -1,4 +1,4 @@
-XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Assada/XJedi-Plus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon) [![Dependency Status](https://gemnasium.com/Assada/XJedi-Plus.svg)](https://gemnasium.com/Assada/XJedi-Plus) [![Code Climate](https://codeclimate.com/github/Assada/XJedi-Plus/badges/gpa.svg)](https://codeclimate.com/github/Assada/XJedi-Plus) [![Stories in Ready](https://badge.waffle.io/Assada/XJedi-Plus.svg?label=ready&title=Ready)](http://waffle.io/Assada/XJedi-Plus) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Assada/XJedi-Plus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ==============
  
 Плагин для портала http://xjedi.com/
