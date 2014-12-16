@@ -1,0 +1,18 @@
+{
+    "Battle at {date}!": "Битва на {date}!",
+    "Battle '{title}' on the map {map} ({players})": "Битва {title} відбудеться на карті {map} ({players})",
+    "Hello {name}": "Привет {name}",
+    "Level {name} became acceptable for you": "Рівень {name} став прийнятним для вас",
+    "{name} levelUp to {lvl}": "Рівень {name} підвищився до {lvl}",
+    "{name} levelDown to {lvl}": "Рівень {name} упав до {lvl}",
+    "{name} was spotted on a server!": "{name} помічений на сервері!",
+    "{name} at {h}:{m} was spotted on a {server} server": "{name} о {h}:{m} був помічений на сервері {server}",
+    "You have not added names to track!": "Ви покищо не додали імен для стеження!",
+    "Remove it": "Видалити його",
+    "Track changes in the level of the player": "Стежити за гравцем",
+    "Do not track changes in the level of the player": "Не стежити за гравцем",
+    "Name": "Ім'я",
+    "Score": "Рахунок",
+    "Players": "Гравців",
+    "New level {name}": "Привіт {name}"
+}
