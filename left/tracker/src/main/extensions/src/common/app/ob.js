@@ -1,7 +1,6 @@
 define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
     var main = {
         init: function () {
-            console.log('Test');
             var html = common.getPageHtml('http://xjedi.com/index.jsp?com=oblist'),
                 content = $($.parseHTML(html)).find('table[style="border-collapse:separate;  margin:0 auto;"]');
             main.parse(content);
