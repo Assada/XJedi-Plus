@@ -2,6 +2,7 @@
 // @name Test
 // @include http://xjedi.com/forum/*
 // @require lib/jquery.min.js
+// @require lib/jquery.highlight.js
 // @require lib/underscore.min.js
 // ==/UserScript==
 
@@ -15,6 +16,7 @@ window.addEventListener('load', function () {
         image_src = kango.io.getResourceUrl('/icons/track.png');
     document.styleSheets[1].addRule('.plusss', "opacity: 0.7; display: inline; width: 11px; height: 11px; cursor: pointer; padding-left: 11px; position: relative; top: 4px; left: 4px; background-image: url('" + image_src + "'); background-position: -13px 0; background-repeat: no-repeat;");
     document.styleSheets[1].addRule('.minusss', "opacity: 0.7; display: inline; width: 11px; height: 11px; cursor: pointer; padding-left: 11px; position: relative; top: 4px; left: 4px; background-image: url('" + image_src + "'); background-position: 0 0; background-repeat: no-repeat;");
+    document.styleSheets[1].addRule('.highlight', "background-color: #FFFF88 !important;");
     if (document.URL.indexOf('index.php?showuser') + 1) {
         name = $nickDOM.text().trim();
         activity = kango.storage.getItem('playersActivity') || [];
@@ -46,6 +48,7 @@ window.addEventListener('load', function () {
                 if (nickList.push(nick)) {
                     kango.storage.setItem('nickList', nickList);
                     $nickDOM.find('[data-nick="' + nick + '"]').attr('class', 'minusss');
+                    $("body").highlight(nick);
                 }
             } else {
                 if ($target.hasClass('minusss')) {
@@ -53,9 +56,17 @@ window.addEventListener('load', function () {
                     if (nickList.splice(nickList.indexOf(nick), 1)) {
                         kango.storage.setItem('nickList', nickList);
                         $nickDOM.find('[data-nick="' + nick + '"]').attr('class', 'plusss');
+                        $("body").unhighlight(nick);
                     }
                 }
             }
         });
+    }
+    if (kango.storage.getItem('goToForum')) {
+        $('#header_link').attr('href', '/forum/');
+        $('#submenu a[href="/forum"]').html('XJedi').attr('href', '/');
+    }
+    if (kango.storage.getItem('highlightNicks')) {
+        $("body").highlight(nickList);
     }
 });
