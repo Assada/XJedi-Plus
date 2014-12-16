@@ -10,7 +10,9 @@ window.addEventListener('load', function () {
         randomIndex = Math.floor(Math.random() * nickList.length),
         hash = window.location.hash,
         $inform = $('#trackerInform'),
-        $trackStatus = $('#trackerStatus');
+        $trackStatus = $('#trackerStatus'),
+        $goToForum = $('#goToForum'),
+        $highlightNicks = $('#highlightNicks');
     if (hash) {
         $('ul.nav a[href="' + hash + '"]').tab('show');
     }
@@ -84,6 +86,12 @@ window.addEventListener('load', function () {
             $trackStatus.html(' НЕ ');
         }
     });
+    $goToForum.on('switchChange.bootstrapSwitch', function (event, state) {
+        kango.storage.setItem('goToForum', state);
+    });
+    $highlightNicks.on('switchChange.bootstrapSwitch', function (event, state) {
+        kango.storage.setItem('highlightNicks', state);
+    });
     $profileLink.on('keyup', function () {
         var regexp = /(http|https):\/\/xjedi\.com\/forum\/index\.php\?showuser=\d{1,5}/i;
         if (regexp.test($(this).val())) {
@@ -105,11 +113,13 @@ window.addEventListener('load', function () {
     }
     $forumFeatures.bootstrapSwitch('state', kango.storage.getItem('forumFeatures') || false);
     $inform.bootstrapSwitch('state', kango.storage.getItem('trackerInform') || false);
+    $goToForum.bootstrapSwitch('state', kango.storage.getItem('goToForum') || false);
+    $highlightNicks.bootstrapSwitch('state', kango.storage.getItem('highlightNicks') || false);
     $('.tooltipp').tooltip();
     $('#lvlNo').html(kango.storage.getItem('checkLvl') ? '' : '<abbr><strong> НЕ </strong></abbr>');
     $trackStatus.html(kango.storage.getItem('trackerInform') ? '' : ' НЕ ');
     $('#yourLvl').html(kango.storage.getItem('profileLvl') || ' вашего ');
-    $('#forumFeatures, #checkLvl, #trackerInform').bootstrapSwitch();
+    $('#forumFeatures, #checkLvl, #trackerInform, #goToForum, #highlightNicks').bootstrapSwitch();
     $profileLink.val(kango.storage.getItem('profileLink') || '');
     $('#countOfPlayers').html(nickList.length);
     $('#randName').html(nickList[randomIndex]);

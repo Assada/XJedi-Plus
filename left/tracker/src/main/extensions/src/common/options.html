@@ -18,7 +18,7 @@
                     <ul class="nav nav-tabs ">
                         <li class="active">
                             <a href="#all" data-toggle="tab">
-                                Все настройки </a>
+                                Основные настройки </a>
                         </li>
                         <li>
                             <a href="#tracker" data-toggle="tab">
@@ -26,7 +26,7 @@
                         </li>
                         <li>
                             <a href="#information" data-toggle="tab">
-                                Информация </a>
+                                Настройки форума </a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -72,8 +72,16 @@
 
                         </div>
                         <div class="tab-pane" id="information">
-                            <h4 class="text-center">Тут пока ничего нет.</h4>
-                            <img src="/icons/huinya.png" alt="" class="center-block" id="opt-image"/>
+                            <div class="checkbox">
+                                <label>
+                                    Логотип форума должен вести на главную <strong>форума</strong>? <input type="checkbox" id="goToForum" data-on-text="Да" data-off-text="Нет" data-label-width="0" data-size="small">
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    Подсвечивать ники из <a href="#all">списка</a>? <input type="checkbox" id="highlightNicks" data-on-text="Да" data-off-text="Нет" data-label-width="0" data-size="small">
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
