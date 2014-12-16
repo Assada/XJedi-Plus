@@ -21,10 +21,10 @@ window.addEventListener('load', function () {
     }
     if (nickList.length === 0) {
         $btnClearNick.attr('disabled', 'disabled');
-        $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
+        $listOfNick.html('<p class="text-muted">' + kango.i18n.getMessage('You have not added names to track!') + '</p>');
     }
     $.each(nickList, function (id, nick) {
-        $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
+        $listOfNick.append('<span class="label label-default">' + nick + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="' + kango.i18n.getMessage('Remove it') + '"></span></span> ');
     });
     $addNick.on('click', function () {
         var $nick = $('#nickName'),
@@ -37,14 +37,14 @@ window.addEventListener('load', function () {
             if (nickList.length === 1) {
                 $listOfNick.empty();
             }
-            $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="Убрать его"></span></span> ');
+            $listOfNick.append(' <span class="label label-default">' + $nickVal + ' <span class="glyphicon glyphicon-trash delete tooltipp" data-toggle="tooltip" data-placement="top" title="' + kango.i18n.getMessage('Remove it') + '"></span></span> ');
             $('#countOfPlayers').html(nickList.length);
             $('.tooltipp').tooltip();
         }
     });
     $clearNick.on('click', function () {
         $btnClearNick.attr('disabled', 'disabled');
-        $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
+        $listOfNick.html('<p class="text-muted">' + kango.i18n.getMessage('You have not added names to track!') + '</p>');
         kango.storage.removeItem('nickList');
         nickList = [];
     });
@@ -52,7 +52,7 @@ window.addEventListener('load', function () {
         var $target = $(event.target),
             $nick;
         if ($target.hasClass('delete')) {
-            $nick = $target.parent().text().replace(' Убрать его', '').trim();
+            $nick = $target.parent().text().replace(' ' + kango.i18n.getMessage('Remove it'), '').trim();
             $target.parent().remove();
             if (nickList.indexOf($nick) > -1) {
                 if (nickList.splice(nickList.indexOf($nick), 1)) {
@@ -62,7 +62,7 @@ window.addEventListener('load', function () {
             }
             if (nickList.length === 0) {
                 $btnClearNick.attr('disabled', 'disabled');
-                $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
+                $listOfNick.html('<p class="text-muted">' + kango.i18n.getMessage('You have not added names to track!') + '</p>');
             }
         }
     });
