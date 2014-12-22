@@ -34,7 +34,7 @@ window.addEventListener('load', function () {
     }
     if (kango.storage.getItem('forumFeatures')) {
         $nickDOM.each(function () {
-            if (_.indexOf(nickList, $(this).text()) + 1 === 0) {
+            if (nickList.indexOf($(this).text()) + 1 === 0) {
                 $(this).append('<div data-nick="' + $(this).text() + '" title="' + kango.i18n.getMessage('Track changes in the level of the player') + '" class="plusss"></div>');
             } else {
                 $(this).append('<div data-nick="' + $(this).text() + '" title="' + kango.i18n.getMessage('Do not track changes in the level of the player') + '" class="minusss"></div>');
