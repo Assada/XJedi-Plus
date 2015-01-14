@@ -44,7 +44,7 @@ window.addEventListener('load', function () {
     });
     $clearNick.on('click', function () {
         $btnClearNick.attr('disabled', 'disabled');
-        $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания</p>');
+        $listOfNick.html('<p class="text-muted">Вы пока не добавили имен для отслеживания </p>');
         kango.storage.removeItem('nickList');
         nickList = [];
     });
