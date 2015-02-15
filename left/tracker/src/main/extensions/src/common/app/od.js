@@ -45,7 +45,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
                         newLvl = user.lvl;
                     $.each(oldList, function (i, oldUser) {
                         if (oldUser.nick === newNick && +oldUser.lvl !== +newLvl) {
-                            update = true; //ЛВЛ ИЗМЕНИЛСЯ
+                            update = true;
                             kango.ui.notifications.show(kango.i18n.getMessage('New level {name}', {name: newNick}), kango.i18n.getMessage('{name} level' + ((oldUser.lvl > newLvl) ? 'Down' : 'Up') + ' to {lvl}', {name: newNick, lvl: newLvl}), kango.io.getResourceUrl('/icons/userLvlUp.png'), function () {
                                 kango.console.log('Notification click');
                             });
