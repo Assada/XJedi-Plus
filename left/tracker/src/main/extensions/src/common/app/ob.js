@@ -3,7 +3,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
         init: function () {
             console.log('Test');
             var html = common.getPageHtml('http://xjedi.com/index.jsp?com=oblist'),
-                content = $($.parseHTML(html)).find('table[style="border-collapse:separate;  margin:0 auto;"]');
+                content = $($.parseHTML(html)).find('.obListButton.lightBack').parent().parent();
             main.parse(content);
         },
         parse: function (content) {
