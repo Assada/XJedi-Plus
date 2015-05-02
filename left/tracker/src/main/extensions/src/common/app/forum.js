@@ -2,6 +2,7 @@
 // @name Test
 // @include http://xjedi.com/forum/*
 // @require lib/jquery.min.js
+// @require lib/jquery.highlight.js
 // @require lib/underscore.min.js
 // ==/UserScript==
 
@@ -11,7 +12,11 @@ window.addEventListener('load', function () {
         name,
         activity,
         nameData,
-        time;
+        time,
+        image_src = kango.io.getResourceUrl('/icons/track.png');
+    document.styleSheets[1].addRule('.plusss', "opacity: 0.7; display: inline; width: 11px; height: 11px; cursor: pointer; padding-left: 11px; position: relative; top: 4px; left: 4px; background-image: url('" + image_src + "'); background-position: -13px 0; background-repeat: no-repeat;");
+    document.styleSheets[1].addRule('.minusss', "opacity: 0.7; display: inline; width: 11px; height: 11px; cursor: pointer; padding-left: 11px; position: relative; top: 4px; left: 4px; background-image: url('" + image_src + "'); background-position: 0 0; background-repeat: no-repeat;");
+    document.styleSheets[1].addRule('.highlight', "background-color: #FFFF88 !important;");
     if (document.URL.indexOf('index.php?showuser') + 1) {
         name = $nickDOM.text().trim();
         activity = kango.storage.getItem('playersActivity') || [];
@@ -29,8 +34,10 @@ window.addEventListener('load', function () {
     }
     if (kango.storage.getItem('forumFeatures')) {
         $nickDOM.each(function () {
-            if (_.indexOf(nickList, $(this).text()) + 1 === 0) {
-                $(this).append('<span style="color:#fff; cursor: pointer" data-nick="' + $(this).text() + '" title="Отслеживать изменения уровня игрока" class="plusss"> + </span>');
+            if (nickList.indexOf($(this).text()) + 1 === 0) {
+                $(this).append('<div data-nick="' + $(this).text() + '" title="' + kango.i18n.getMessage('Track changes in the level of the player') + '" class="plusss"></div>');
+            } else {
+                $(this).append('<div data-nick="' + $(this).text() + '" title="' + kango.i18n.getMessage('Do not track changes in the level of the player') + '" class="minusss"></div>');
             }
         });
         document.querySelector('body').addEventListener('click', function (event) {
@@ -40,9 +47,26 @@ window.addEventListener('load', function () {
                 nick = $target.attr('data-nick');
                 if (nickList.push(nick)) {
                     kango.storage.setItem('nickList', nickList);
-                    $nickDOM.find('[data-nick="' + nick + '"]').remove();
+                    $nickDOM.find('[data-nick="' + nick + '"]').attr('class', 'minusss');
+                    $("body").highlight(nick);
+                }
+            } else {
+                if ($target.hasClass('minusss')) {
+                    nick = $target.attr('data-nick');
+                    if (nickList.splice(nickList.indexOf(nick), 1)) {
+                        kango.storage.setItem('nickList', nickList);
+                        $nickDOM.find('[data-nick="' + nick + '"]').attr('class', 'plusss');
+                        $("body").unhighlight(nick);
+                    }
                 }
             }
         });
+    }
+    if (kango.storage.getItem('goToForum')) {
+        $('#header_link').attr('href', '/forum/');
+        $('#submenu a[href="/forum"]').html('XJedi').attr('href', '/');
+    }
+    if (kango.storage.getItem('highlightNicks')) {
+        $("body").highlight(nickList);
     }
 });

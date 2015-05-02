@@ -1,7 +1,6 @@
 define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
     var main = {
         init: function () {
-            console.log('Test');
             var html = common.getPageHtml('http://xjedi.com/index.jsp?com=oblist'),
                 content = $($.parseHTML(html)).find('.obListButton.lightBack').parent().parent();
             main.parse(content);
@@ -25,7 +24,7 @@ define(['app/common', 'jquery.min', 'underscore.min'], function (common) {
             });
         },
         inform: function (date, img, title, map, players, id) {
-            kango.ui.notifications.show('Битва на ' + date + '!', 'Битва ' + title + ' состоится на карте ' + map + ' ( ' + players + ') ', kango.io.getResourceUrl('/icons/ob.png'), function () {
+            kango.ui.notifications.show(kango.i18n.getMessage('Battle at {date}!', {date: date}), kango.i18n.getMessage("Battle '{title}' on the map {map} ({players})", {date: date, title: title, map: map, players: players}), kango.io.getResourceUrl('/icons/ob.png'), function () {
                 kango.browser.tabs.create({url: 'http://xjedi.com/index.jsp?com=ob&id=' + id});
             });
             return true;

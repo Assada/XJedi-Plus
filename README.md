@@ -1,7 +1,9 @@
-XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon)
+XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon) [![Dependency Status](https://gemnasium.com/Assada/XJedi-Plus.svg)](https://gemnasium.com/Assada/XJedi-Plus) [![Code Climate](https://codeclimate.com/github/Assada/XJedi-Plus/badges/gpa.svg)](https://codeclimate.com/github/Assada/XJedi-Plus) [![Stories in Ready](https://badge.waffle.io/Assada/XJedi-Plus.svg?label=ready&title=Ready)](http://waffle.io/Assada/XJedi-Plus) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Assada/XJedi-Plus?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ==============
  
 Плагин для портала http://xjedi.com/
+
+![http://i.imgur.com/7YyZ3lR.png](http://i.imgur.com/7YyZ3lR.png)
 
 **Что уже реализовано:**
 - [x]  Уведомление о том, что %nick% зашел на сервер.
@@ -14,10 +16,10 @@ XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon)
 **В разработке:**
 - [ ] Новые иконки
 - [ ] Оптимизация
+- [ ] Локализация на на 3 языка: Русский, Український, English
 
 **Отложено:**
 - [ ] Юнит-тестирование
-- [ ] Локализация на на 3 языка: Русский, Український, English
 - [ ] Поддержка Safari
 
 **Отменено:**

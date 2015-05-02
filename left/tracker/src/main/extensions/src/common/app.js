@@ -16,7 +16,6 @@ require(
             if (kango.storage.getItem('checkLvl')) {
                 od.getLvl(kango.storage.getItem('profileLink'));
             }
-            console.log(kango.storage.getItem('profileLvl') || false);
             setTimeout(profile, 15 * 60 * 1000);
         }());
         (function serverData() {
