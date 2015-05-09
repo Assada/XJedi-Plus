@@ -1,13 +1,13 @@
 {
-    "content_scripts": [], 
     "description": "XJedi Plus",
-    "creator": "Left&Assada",
+    "creator": "Assada",
+    "update_path_url": "https://assada.me/xjedi_upd/",
     "background_scripts": [
         "lib/require.js",
         "app.js"
     ], 
     "homepage_url": "https://xjedi.assada.me/",
-    "version": "0.1.2",
+    "version": "0.1.4",
     "browser_button": {
         "caption": "XJedi Monitor",
         "icon": "icons/button.png",
@@ -20,5 +20,6 @@
     "options_page": "options.html",
     "content_scripts": [
         "app/forum.js"
-    ]
+    ],
+    "default_locale": "ru"
 }

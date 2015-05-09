@@ -3,6 +3,8 @@ XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon) [![Dependency
  
 Плагин для портала http://xjedi.com/
 
+![http://i.imgur.com/7YyZ3lR.png](http://i.imgur.com/7YyZ3lR.png)
+
 **Что уже реализовано:**
 - [x]  Уведомление о том, что %nick% зашел на сервер.
 - [x] Уведомление о том, что кто-то получил ваш уровень.
@@ -14,10 +16,10 @@ XJedi Plus ![image](http://ci.assada.me/job/XJedi-Plus/badge/icon) [![Dependency
 **В разработке:**
 - [ ] Новые иконки
 - [ ] Оптимизация
+- [ ] Локализация на на 3 языка: Русский, Український, English
 
 **Отложено:**
 - [ ] Юнит-тестирование
-- [ ] Локализация на на 3 языка: Русский, Український, English
 - [ ] Поддержка Safari
 
 **Отменено:**
