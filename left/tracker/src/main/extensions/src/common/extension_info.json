@@ -7,7 +7,7 @@
         "app.js"
     ], 
     "homepage_url": "https://xjedi.assada.me/",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "browser_button": {
         "caption": "XJedi Monitor",
         "icon": "icons/button.png",
