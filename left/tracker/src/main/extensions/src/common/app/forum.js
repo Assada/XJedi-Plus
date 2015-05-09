@@ -6,7 +6,7 @@
 // @require lib/underscore.min.js
 // ==/UserScript==
 
-window.addEventListener('load', function () {
+$(document).ready(function () {
     var nickList = kango.storage.getItem('nickList') || [],
         $nickDOM = $('.nickname'),
         name,
